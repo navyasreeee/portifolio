@@ -1,0 +1,79 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+
+export default function Portfolio() {
+  return (
+    <div className="min-h-screen bg-gray-100 text-gray-900">
+      {/* Hero Section */}
+      <section className="h-screen flex flex-col justify-center items-center text-center">
+        <motion.h1
+          className="text-5xl font-bold mb-4"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+        >
+          Hi, I'm [Your Name]
+        </motion.h1>
+        <motion.p
+          className="text-lg text-gray-600"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          A Passionate Software Engineer
+        </motion.p>
+        <img src="/profile.jpg" alt="Profile" className="w-40 h-40 rounded-full mt-4 shadow-lg" />
+      </section>
+
+      {/* 3D Model Section */}
+      <section className="h-[50vh] flex justify-center items-center">
+        <Canvas>
+          <OrbitControls enableZoom={false} />
+          <ambientLight intensity={0.5} />
+          <directionalLight position={[2, 5, 2]} />
+          <mesh>
+            <sphereGeometry args={[1, 64, 64]} />
+            <meshStandardMaterial color="royalblue" />
+          </mesh>
+        </Canvas>
+      </section>
+
+      {/* About Me Section */}
+      <section className="py-20 text-center bg-white shadow-md">
+        <h2 className="text-3xl font-bold mb-6">About Me</h2>
+        <p className="max-w-3xl mx-auto text-lg text-gray-700">
+          I am a passionate software engineer with expertise in modern web technologies.
+          My goal is to build innovative and scalable applications.
+        </p>
+      </section>
+
+      {/* Skills Section */}
+      <section className="py-20 text-center">
+        <h2 className="text-3xl font-bold mb-6">Skills & Tech Stack</h2>
+        <div className="grid grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <motion.div whileHover={{ scale: 1.1 }} className="p-4 bg-white rounded-xl shadow-lg">Python</motion.div>
+          <motion.div whileHover={{ scale: 1.1 }} className="p-4 bg-white rounded-xl shadow-lg">Java</motion.div>
+          <motion.div whileHover={{ scale: 1.1 }} className="p-4 bg-white rounded-xl shadow-lg">SQL</motion.div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section className="py-20 text-center bg-gray-200">
+        <h2 className="text-3xl font-bold mb-6">Projects</h2>
+        <div className="grid grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <motion.div whileHover={{ scale: 1.05 }} className="p-4 bg-white rounded-xl shadow-lg">Project 1</motion.div>
+          <motion.div whileHover={{ scale: 1.05 }} className="p-4 bg-white rounded-xl shadow-lg">Project 2</motion.div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 text-center bg-white shadow-md">
+        <h2 className="text-3xl font-bold mb-6">Contact Me</h2>
+        <p className="text-lg">Email: your.email@example.com</p>
+        <p className="text-lg">LinkedIn: linkedin.com/in/yourprofile</p>
+      </section>
+    </div>
+  );
+}
